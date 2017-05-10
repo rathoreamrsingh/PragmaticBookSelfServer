@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
 
 /**
  * This class is for keeping all the connection related data

@@ -3,26 +3,31 @@
  * Copyright *
  *
  */
-package com.pragamtic.bookself.employee.task;
+package com.pragmatic.bookself.employee.task;
 
 import java.util.List;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
-import com.pragamatic.bookself.result.PragmaticBookSelfResult;
-import com.pragamatic.bookself.result.ResultCode;
-import com.pragamatic.bookself.result.ResultCode.ResultCodes;
-import com.pragamatic.bookself.task.core.PragmaticBookselfTask;
 import com.pragmatic.bookself.employee.EmployeeEntity;
 import com.pragmatic.bookself.employee.EmployeeStorageManager;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
+import com.pragmatic.bookself.result.PragmaticBookSelfResult;
+import com.pragmatic.bookself.result.ResultCode;
+import com.pragmatic.bookself.result.ResultCode.ResultCodes;
 import com.pragmatic.bookself.session.PragmaticBookselfSession;
 import com.pragmatic.bookself.storagecontext.StorageContext;
+import com.pragmatic.bookself.task.core.PragmaticBookselfTask;
 
 /**
  * @author krishna
  *
  * @version 1.0
  */
-public class RetrieveAllEmployeeTask extends PragmaticBookselfTask<List<EmployeeEntity>> {
+public class RetrieveEmployeeDataByNameTask extends PragmaticBookselfTask<List<EmployeeEntity>> {
+	private String name;
+
+	public RetrieveEmployeeDataByNameTask(String fname) {
+		this.name = fname;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -49,27 +54,14 @@ public class RetrieveAllEmployeeTask extends PragmaticBookselfTask<List<Employee
 	@Override
 	protected PragmaticBookSelfResult<List<EmployeeEntity>> execute(PragmaticBookselfSession session,
 			StorageContext context) throws PragmaticBookSelfException {
-		/*
-		 * we created instance of EmployeeStorageManager and called method
-		 * retrieveAllEmployeeData
-		 */
-		List<EmployeeEntity> employeeData = EmployeeStorageManager.getInstance().retrieveAllEmployeeData(context);
-		/*
-		 * we created return result.
-		 */
-		PragmaticBookSelfResult<List<EmployeeEntity>> pragmaticBookSelfResult = new PragmaticBookSelfResult<List<EmployeeEntity>>();
-		/*
-		 * setted result data
-		 */
-		pragmaticBookSelfResult.setRestltedObject(employeeData);
-		/*
-		 * setted result code.
-		 */
-		pragmaticBookSelfResult.setResultCode(new ResultCode(ResultCodes.SUCCESSFUL));
-		/*
-		 * returning result
-		 */
-		return pragmaticBookSelfResult;
+		PragmaticBookSelfResult<List<EmployeeEntity>> result = new PragmaticBookSelfResult<List<EmployeeEntity>>();
+		EmployeeStorageManager.getInstance().getEmployeeDataByName(name, context);
+		List<EmployeeEntity> employeeEntityList = EmployeeStorageManager.getInstance().getEmployeeDataByName(name,
+				context);
+		result.setRestltedObject(employeeEntityList);
+		result.setResultCode(new ResultCode(ResultCodes.SUCCESSFUL));
+
+		return result;
 	}
 
 }

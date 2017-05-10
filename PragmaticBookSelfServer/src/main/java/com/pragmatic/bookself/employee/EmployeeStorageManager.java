@@ -7,7 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
 import com.pragmatic.bookself.storagecontext.StorageContext;
 
 /**

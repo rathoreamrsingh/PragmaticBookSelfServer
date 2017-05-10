@@ -3,29 +3,28 @@
  * Copyright *
  *
  */
-package com.pragamtic.bookself.employee.task;
+package com.pragmatic.bookself.employee.task;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
-import com.pragamatic.bookself.result.PragmaticBookSelfResult;
-import com.pragamatic.bookself.result.ResultCode;
-import com.pragamatic.bookself.result.ResultCode.ResultCodes;
-import com.pragamatic.bookself.task.core.PragmaticBookselfTask;
 import com.pragmatic.bookself.employee.EmployeeEntity;
 import com.pragmatic.bookself.employee.EmployeeStorageManager;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
+import com.pragmatic.bookself.result.PragmaticBookSelfResult;
+import com.pragmatic.bookself.result.ResultCode;
+import com.pragmatic.bookself.result.ResultCode.ResultCodes;
 import com.pragmatic.bookself.session.PragmaticBookselfSession;
 import com.pragmatic.bookself.storagecontext.StorageContext;
+import com.pragmatic.bookself.task.core.PragmaticBookselfTask;
 
 /**
  * @author krishna
  *
  * @version 1.0
  */
-public class UpdateEmployeeDataTask extends PragmaticBookselfTask<EmployeeEntity> {
-	private EmployeeEntity employee = null;
+public class RetrieveEmployeeDataByIDTask extends PragmaticBookselfTask<EmployeeEntity> {
+	private int empID;
 
-	//constructor
-	public UpdateEmployeeDataTask(EmployeeEntity employee) {
-		this.employee = employee;
+	public RetrieveEmployeeDataByIDTask(int empID) {
+		this.empID = empID;
 	}
 
 	/*
@@ -36,6 +35,7 @@ public class UpdateEmployeeDataTask extends PragmaticBookselfTask<EmployeeEntity
 	 * com.pragmatic.bookself.session.PragmaticBookselfSession,
 	 * com.pragmatic.bookself.storagecontext.StorageContext)
 	 */
+
 	@Override
 	protected void validateParameter(PragmaticBookselfSession session, StorageContext context)
 			throws PragmaticBookSelfException {
@@ -53,12 +53,12 @@ public class UpdateEmployeeDataTask extends PragmaticBookselfTask<EmployeeEntity
 	@Override
 	protected PragmaticBookSelfResult<EmployeeEntity> execute(PragmaticBookselfSession session, StorageContext context)
 			throws PragmaticBookSelfException {
-		EmployeeEntity updateEmployee = EmployeeStorageManager.getInstance().updateEmployeeData(employee, context);
-		PragmaticBookSelfResult<EmployeeEntity> pragamaticBookSelfResult = new PragmaticBookSelfResult<EmployeeEntity>();
-		pragamaticBookSelfResult.setRestltedObject(updateEmployee);
-		pragamaticBookSelfResult.setResultCode(new ResultCode(ResultCodes.SUCCESSFUL));
-
-		return pragamaticBookSelfResult;
+		PragmaticBookSelfResult<EmployeeEntity> result = new PragmaticBookSelfResult<EmployeeEntity>();
+		EmployeeStorageManager.getInstance().getEmployeeDataById(empID, context);
+		EmployeeEntity employeeEntity = EmployeeStorageManager.getInstance().getEmployeeDataById(empID, context);
+		result.setRestltedObject(employeeEntity);
+		result.setResultCode(new ResultCode(ResultCodes.SUCCESSFUL));
+		return result;
 	}
 
 }

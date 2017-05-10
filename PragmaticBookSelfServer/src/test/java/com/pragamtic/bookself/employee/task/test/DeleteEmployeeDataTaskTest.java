@@ -7,14 +7,7 @@ package com.pragamtic.bookself.employee.task.test;
 
 import org.junit.Test;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
-import com.pragamatic.bookself.result.PragmaticBookSelfResult;
-import com.pragamatic.bookself.task.core.PragmaticBookselfTask;
-import com.pragamtic.bookself.employee.task.DeleteEmployeeDataTask;
-import com.pragamtic.bookself.employee.task.RetrieveEmployeeDataByIDTask;
-import com.pragmatic.bookself.employee.EmployeeEntity;
-import com.pragmatic.bookself.session.PragmaticBookselfSession;
-import com.pragmatic.bookself.storagecontext.StorageContext;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
 
 import junit.framework.TestCase;
 
@@ -26,15 +19,6 @@ import junit.framework.TestCase;
 public class DeleteEmployeeDataTaskTest extends TestCase {
 	@Test
 	public void testDeleteEmployeeData() throws PragmaticBookSelfException {
-		int empId = 1;
-		PragmaticBookselfTask<EmployeeEntity> delete = new DeleteEmployeeDataTask(empId);
-		PragmaticBookselfSession session = new PragmaticBookselfSession();
-		StorageContext context = new StorageContext();
-
-		PragmaticBookSelfResult<EmployeeEntity> result = delete.executeTask(session, context);
-		
-		System.out.print("Delete Successful");
-		
 
 	}
 

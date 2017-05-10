@@ -3,13 +3,13 @@
  * Copyright *
  *
  */
-package com.pragamatic.bookself.task.core;
+package com.pragmatic.bookself.task.core;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
-import com.pragamatic.bookself.result.PragmaticBookSelfResult;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
+import com.pragmatic.bookself.result.PragmaticBookSelfResult;
 import com.pragmatic.bookself.session.PragmaticBookselfSession;
 import com.pragmatic.bookself.storagecontext.StorageContext;
 

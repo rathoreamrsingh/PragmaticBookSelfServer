@@ -3,7 +3,7 @@
  * Copyright *
  *
  */
-package com.pragamatic.bookself.result;
+package com.pragmatic.bookself.result;
 
 /**
  * @author amar

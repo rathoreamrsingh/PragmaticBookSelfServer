@@ -1,4 +1,4 @@
-package com.pragamatic.bookself.exception;
+package com.pragmatic.bookself.exception;
 
 /**
  * 

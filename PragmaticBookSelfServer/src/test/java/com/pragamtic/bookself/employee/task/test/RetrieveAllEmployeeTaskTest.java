@@ -5,16 +5,9 @@
  */
 package com.pragamtic.bookself.employee.task.test;
 
-import java.util.List;
-
 import org.junit.Test;
 
-import com.pragamatic.bookself.exception.PragmaticBookSelfException;
-import com.pragamatic.bookself.task.core.PragmaticBookselfTask;
-import com.pragamtic.bookself.employee.task.RetrieveAllEmployeeTask;
-import com.pragmatic.bookself.employee.EmployeeEntity;
-import com.pragmatic.bookself.session.PragmaticBookselfSession;
-import com.pragmatic.bookself.storagecontext.StorageContext;
+import com.pragmatic.bookself.exception.PragmaticBookSelfException;
 
 import junit.framework.TestCase;
 
@@ -27,11 +20,6 @@ public class RetrieveAllEmployeeTaskTest extends TestCase {
 
 	@Test
 	public void testRetrieveAllEmployeeData() throws PragmaticBookSelfException {
-		PragmaticBookselfTask task = new RetrieveAllEmployeeTask();
-		PragmaticBookselfSession session = new PragmaticBookselfSession();
-		StorageContext context = new StorageContext();
-		List<EmployeeEntity> resultedObject = (List<EmployeeEntity>) task.executeTask(session, context)
-				.getResultedObject();
-		System.out.println("test");
+		
 	}
 }
